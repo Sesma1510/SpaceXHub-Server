@@ -12,7 +12,7 @@ const User = require("../models/User.model");
 
 // Require necessary (isAuthenticated) middleware in order to control access to specific routes
 const { isAuthenticated } = require("../middleware/jwt.middleware.js");
-
+const requireToken = require("../middleware/requireToken");
 // How many rounds should bcrypt run the salt (default - 10 rounds)
 const saltRounds = 10;
 
@@ -119,7 +119,7 @@ router.post("/login", (req, res, next) => {
 });
 
 // GET  /auth/verify  -  Used to verify JWT stored on the client
-router.get("/verify", isAuthenticated, (req, res, next) => {
+router.get("/verify", requireToken, isAuthenticated, (req, res, next) => {
   // If JWT token is valid the payload gets decoded by the
   // isAuthenticated middleware and is made available on `req.payload`
   // console.log(`req.payload`, req.payload);
