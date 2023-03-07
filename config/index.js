@@ -15,7 +15,7 @@ const cors = require("cors");
 
 const FRONTEND_URL = process.env.ORIGIN || "http://localhost:3000";
 
-const path = require("path");
+// const path = require("path");
 
 // Middleware configuration
 module.exports = (app) => {
@@ -23,17 +23,17 @@ module.exports = (app) => {
   // Services like Fly use something called a proxy and you need to add this to your server
   app.set("trust proxy", 1);
 
-  const _dirname = path.dirname("");
-  const buildPath = path.join(_dirname, "../client/build");
+  // const _dirname = path.dirname("");
+  // const buildPath = path.join(_dirname, "../client/build");
 
-  app.use(express.static(buildPath));
+  // app.use(express.static(buildPath));
 
-  app.get("/*", function (req, res) {
-    res.sendFile(path.join(__dirname, "../client/build/index.html")),
-      function (err) {
-        res.status(500).send(err);
-      };
-  });
+  // app.get("/*", function (req, res) {
+  //   res.sendFile(path.join(__dirname, "../client/build/index.html")),
+  //     function (err) {
+  //       res.status(500).send(err);
+  //     };
+  // });
 
   // controls a very specific header to pass headers from the frontend
   app.use(
