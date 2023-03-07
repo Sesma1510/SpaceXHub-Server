@@ -4,12 +4,15 @@ const favoriteSchema = new Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: "User" },
     launch: { type: Schema.Types.ObjectId, ref: "Launch" },
-    crew: { type: Schema.Types.ObjectId, ref: "Crew" },
   },
   {
     timestamps: true,
   }
 );
+
+favoriteSchema.methods.removeLaunch = function () {
+  return this.deleteOne();
+};
 
 const Favorite = model("Favorite", favoriteSchema);
 

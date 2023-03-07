@@ -11,7 +11,7 @@ const launchSchema = new Schema(
       type: String,
       required: [true, "Mission name is required."],
     },
-    launch_date_utc: {
+    date_utc: {
       type: Date,
       required: [true, "Launch date is required."],
     },
@@ -21,10 +21,18 @@ const launchSchema = new Schema(
       rocket_type: { type: String },
     },
     links: {
-      mission_patch_small: { type: String },
-      mission_patch: { type: String },
+      patch: {
+        large: { type: String },
+      },
       video_link: { type: String },
       flickr_images: [{ type: String }],
+      reddit: {
+        campaign: { type: String },
+        launch: { type: String },
+        media: { type: String },
+        recovery: { type: String },
+      },
+      webcast: { type: String },
     },
     details: { type: String },
     upcoming: { type: Boolean, default: false },
