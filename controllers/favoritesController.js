@@ -19,7 +19,7 @@ exports.getFavorites = async (req, res) => {
 exports.createFavorite = async (req, res) => {
   try {
     const { userId } = req.params;
-    const { launchId } = req.body;
+    const { launchId, isFavorite } = req.body; // add isFavorite here
 
     // Find the user and launch documents
     const user = await User.findById(userId);
@@ -67,7 +67,7 @@ exports.removeFavorite = async (req, res) => {
     }
 
     // Remove the favorite document from the database
-    await favorite.removeLaunch();
+    await favorite.deleteOne();
 
     // Remove the favorite record from the user's favorites array
     const user = await User.findByIdAndUpdate(
