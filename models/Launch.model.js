@@ -7,7 +7,7 @@ const launchSchema = new Schema(
       required: [true, "Flight number is required."],
       unique: true,
     },
-    mission_name: {
+    name: {
       type: String,
       required: [true, "Mission name is required."],
     },

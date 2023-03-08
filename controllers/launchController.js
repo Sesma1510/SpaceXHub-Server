@@ -14,7 +14,7 @@ exports.getAllLaunches = async (req, res) => {
         "https://api.spacexdata.com/v4/launches"
       );
       const launches = response.data;
-
+      console.log(launches);
       // Save launches to the database
       await Launch.insertMany(launches);
 
