@@ -27,6 +27,9 @@ app.use("/api", favoritesRoutes);
 const launchRoutes = require("./routes/launch.routes");
 app.use("/api", launchRoutes);
 
+const profileRoutes = require("./routes/profile.routes");
+app.use("/user", profileRoutes);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

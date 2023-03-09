@@ -19,7 +19,14 @@ const userSchema = new Schema(
     },
     favorites: [{ type: Schema.Types.ObjectId, ref: "Favorite" }],
     profile: {
-      image: { type: String },
+      image: {
+        public_id: {
+          type: String,
+        },
+        url: {
+          type: String,
+        },
+      },
       username: { type: String },
     },
     launchSubscriptions: [
